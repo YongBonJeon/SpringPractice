@@ -11,19 +11,26 @@ public class JdbcMemberRepository implements MemberRepository {
     public JdbcMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+
     @Override
     public Member save(Member member) {
         String sql = "insert into member(name) values(?)";
+
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
+            // 커넥션 가져온다
             conn = getConnection();
             pstmt = conn.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, member.getName());
+
+            // DB 쿼리 실행
             pstmt.executeUpdate();
+            // ID
             rs = pstmt.getGeneratedKeys();
+            // 값이 존재하면
             if (rs.next()) {
                 member.setId(rs.getLong(1));
             } else {
@@ -33,6 +40,7 @@ public class JdbcMemberRepository implements MemberRepository {
         } catch (Exception e) {
             throw new IllegalStateException(e);
         } finally {
+            // 연결 종료
             close(conn, pstmt, rs);
         }
     }
@@ -46,6 +54,8 @@ public class JdbcMemberRepository implements MemberRepository {
             conn = getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setLong(1, id);
+
+            // 값 가져오는 DB 쿼리 실행
             rs = pstmt.executeQuery();
             if(rs.next()) {
                 Member member = new Member();
