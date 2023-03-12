@@ -1,13 +1,13 @@
-package hello.hellospring;
+package hello.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloSpringApplication {
+public class CoreApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloSpringApplication.class, args);
+		SpringApplication.run(CoreApplication.class, args);
 	}
 
 }
