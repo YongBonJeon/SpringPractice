@@ -14,7 +14,7 @@
 성공
 <ul>
   <li>id=${member.id}</li>
-  <li>username=${member.username}></li>
+  <li>username=${member.username}</li>
   <li>age=${member.age}</li>
 </ul>
 <a href="/index.html">메인</a>
