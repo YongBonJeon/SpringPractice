@@ -51,7 +51,7 @@ public class ValidationItemControllerV2 {
         return "validation/v2/addForm";
     }
 
-    /*@PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV1(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
         // 검증 오류 결과 보관
@@ -86,7 +86,7 @@ public class ValidationItemControllerV2 {
         redirectAttributes.addAttribute("itemId", savedItem.getId());
         redirectAttributes.addAttribute("status", true);
         return "redirect:/validation/v2/items/{itemId}";
-    }*/
+    }
 
     //@PostMapping("/add")
     public String addItemV2(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
