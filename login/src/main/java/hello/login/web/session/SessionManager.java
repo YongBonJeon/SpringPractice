@@ -16,9 +16,6 @@ public class SessionManager {
 
     private Map<String, Object> sessionStore = new ConcurrentHashMap<>();
 
-    /**
-     * 세션 생성
-     */
     public static final String SESSION_COOKIE_NAME = "MySessionId";
     public void createSession(Object value, HttpServletResponse response) {
 
