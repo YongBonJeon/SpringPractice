@@ -13,6 +13,7 @@ public class CheckedTest {
         service.callCatch();
     }
 
+
     @Test
     void catch_throw() {
         Service service = new Service();
@@ -21,6 +22,10 @@ public class CheckedTest {
 
     }
 
+    /**
+     * Exception을 상속받은 예외는 체크 예외가 된다.
+     * 체크 예외는 예외를 처리해야 한다.
+     */
     static class MyCheckedException extends Exception {
         public MyCheckedException(String message) {
             super(message);
@@ -38,6 +43,11 @@ public class CheckedTest {
             }
         }
 
+        /**
+         * 체크 예외를 밖으로 던지는 코드
+         * 체크 예외는 예외를 잡지 않고 밖으로 던지려면 throws 필수
+         * @throws MyCheckedException
+         */
         public void callThrow() throws MyCheckedException {
             repository.call();
         }
