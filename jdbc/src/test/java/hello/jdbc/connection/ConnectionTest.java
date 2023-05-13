@@ -28,7 +28,14 @@ public class ConnectionTest {
     void dataSourceDriverManage() throws SQLException {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         useDataSource(dataSource);
+    }
 
+    private void useDataSource(DataSource dataSource) throws SQLException {
+        Connection connection1 = dataSource.getConnection();
+        Connection connection2 = dataSource.getConnection();
+
+        log.info("connection={}, class={}", connection1, connection1.getClass());
+        log.info("connection={}, class={}", connection2, connection2.getClass());
     }
 
     @Test
@@ -43,11 +50,5 @@ public class ConnectionTest {
         useDataSource(dataSource);
         Thread.sleep(1000);
     }
-    private void useDataSource(DataSource dataSource) throws SQLException {
-        Connection connection1 = dataSource.getConnection();
-        Connection connection2 = dataSource.getConnection();
 
-        log.info("connection={}, class={}", connection1, connection1.getClass());
-        log.info("connection={}, class={}", connection2, connection2.getClass());
-    }
 }
