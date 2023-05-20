@@ -17,17 +17,20 @@ public class RollbackTest {
 
     @Test
     void runtimeException() {
-        rollbackService.runtimeException();
+        Assertions.assertThatThrownBy(() -> rollbackService.runtimeException())
+                .isInstanceOf(RuntimeException.class);
     }
 
     @Test
     void checkedException() {
-        Assertions.assertThatThrownBy(() -> rollbackService.checkedException()).isInstanceOf(MyException.class);
+        Assertions.assertThatThrownBy(() -> rollbackService.checkedException())
+                .isInstanceOf(MyException.class);
     }
 
     @Test
     void rollbackFor() {
-        Assertions.assertThatThrownBy(() -> rollbackService.rollbackFor()).isInstanceOf(MyException.class);
+        Assertions.assertThatThrownBy(() -> rollbackService.rollbackFor())
+                .isInstanceOf(MyException.class);
     }
 
     @TestConfiguration
