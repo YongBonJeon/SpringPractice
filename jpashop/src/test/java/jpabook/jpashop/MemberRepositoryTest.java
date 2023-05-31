@@ -21,11 +21,11 @@ class MemberRepositoryTest {
         member.setName("memberA");
 
         //when
-        Long saveId = memberRepository.save(member);
+        //Long saveId = memberRepository.save(member);
 
 
         //then
-        Member findMember = memberRepository.find(saveId);
+        //Member findMember = memberRepository.find(saveId);
 
         Assertions.assertThat(member.getId())
                 .isEqualTo(findMember.getId());
