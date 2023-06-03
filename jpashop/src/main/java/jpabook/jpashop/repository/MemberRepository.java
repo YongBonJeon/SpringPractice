@@ -1,6 +1,8 @@
 package jpabook.jpashop.repository;
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -10,6 +12,7 @@ import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
     /*
@@ -17,8 +20,10 @@ public class MemberRepository {
     @PersistenceUnit
     private EntityManagerFactory emf;
     */
-    @PersistenceContext
-    private EntityManager em;
+    // @PersistenceContext
+    // @PersistenceContext를 스프링 부트가 @Autowired도 지원
+    // @RequiredArgsConstructor를 통해 생성자 자동 생성 -> @Autowired 생성자가 하나일 경우 생략 가능
+    private final EntityManager em;
 
     public void save(Member member) {
         em.persist(member);
