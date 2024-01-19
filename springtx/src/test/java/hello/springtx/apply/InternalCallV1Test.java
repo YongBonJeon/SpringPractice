@@ -32,36 +32,20 @@ public class InternalCallV1Test {
 
         @Bean
         CallService callService() {
-            return new CallService(internalService());
-        }
-
-        @Bean
-        InternalService internalService() {
-            return new InternalService();
+            return new CallService();
         }
     }
+
 
 
     @RequiredArgsConstructor
     static class CallService {
-
-        private final InternalService internalService;
-
         public void external() {
             log.info("call external");
             printTxInfo();
-            internalService.internal();
+            this.internal();
         }
 
-        private void printTxInfo() {
-            boolean txActive = TransactionSynchronizationManager.isActualTransactionActive();
-            log.info("tx active ={}", txActive);
-            boolean readOnly = TransactionSynchronizationManager.isCurrentTransactionReadOnly();
-            log.info("tx readOnly ={}", readOnly);
-        }
-    }
-
-    static class InternalService {
         @Transactional
         public void internal() {
             log.info("call internal");
@@ -75,6 +59,4 @@ public class InternalCallV1Test {
             log.info("tx readOnly ={}", readOnly);
         }
     }
-
-
 }

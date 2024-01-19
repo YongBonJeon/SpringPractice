@@ -26,5 +26,4 @@ public class MemberRepository {
                 .setParameter("username", username)
                 .getResultList().stream().findAny();
     }
-
 }

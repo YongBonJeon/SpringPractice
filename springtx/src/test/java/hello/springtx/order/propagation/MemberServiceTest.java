@@ -72,6 +72,22 @@ class MemberServiceTest {
      * logRepository @Transactional:ON
      */
     @Test
+    void outerTxOn_success() {
+        // given
+        String username = "outerTxOn_success";
+
+        memberService.joinV1(username);
+
+        Assertions.assertTrue(memberRepository.find(username).isPresent());
+        Assertions.assertTrue(logRepository.find(username).isPresent());
+    }
+
+    /**
+     * MemberService    @Transactional:ON
+     * MemberRepository @Transactional:ON
+     * LogRepository    @Transactional:ON Exception
+     */
+    @Test
     void outerTxOn_fail() {
         // given
         String username = "로그예외_outerTxOn_fail";
@@ -83,8 +99,8 @@ class MemberServiceTest {
         Assertions.assertTrue(logRepository.find(username).isEmpty());
     }
     /**
-     * memberSErvice @Transacetional:ON
-     * memberRepository @Transctional:ON
+     * MemberService    @Transactional:ON
+     * MemberRepository @Transactional:ON
      * logRepository @Transactional:ON
      */
     @Test
@@ -100,9 +116,9 @@ class MemberServiceTest {
     }
 
     /**
-     * memberSErvice @Transacetional:ON
-     * memberRepository @Transctional:ON
-     * logRepository @Transactional:ON(Requires_NEW)
+     * MemberService    @Transactional:ON
+     * MemberRepository @Transactional:ON
+     * logRepository    @Transactional:ON (Requires_NEW)
      */
     @Test
     void recoverException_success() {
