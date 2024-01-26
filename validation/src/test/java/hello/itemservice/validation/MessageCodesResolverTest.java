@@ -24,6 +24,5 @@ public class MessageCodesResolverTest {
         for (String messageCode : messageCodes) {
             System.out.println("messageCode = " + messageCode);
         }
-
     }
 }

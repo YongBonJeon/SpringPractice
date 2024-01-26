@@ -92,7 +92,7 @@ public class LoginController {
         // 로그인 성공 처리
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
-
+        System.out.println(redirectURL);
         return "redirect:" + redirectURL;
     }
 

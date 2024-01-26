@@ -49,7 +49,7 @@ public class ValidationItemControllerV3 {
         return "validation/v3/addForm";
     }
 
-    //@PostMapping("/add")
+    @PostMapping("/add")
     public String addItem(@Validated @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
         // 특정 필드가 아닌 복합 룰 검증
@@ -72,7 +72,7 @@ public class ValidationItemControllerV3 {
         return "redirect:/validation/v3/items/{itemId}";
     }
 
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV2(@Validated(SaveCheck.class) @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
         // 특정 필드가 아닌 복합 룰 검증

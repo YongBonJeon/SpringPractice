@@ -26,11 +26,11 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/css/**", "*.ico", "/error", "/error-page/**");
     }
 
-    @Override
+    /*@Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
         resolvers.add(new MyhandlerExceptionResolver());
         resolvers.add(new UserHandlerExceptionResolver());
-    }
+    }*/
 
     //@Bean
     public FilterRegistrationBean logFilter() {
