@@ -4,7 +4,8 @@
 <body>
 <div class="container">
   <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-  <div> <div>
+  <div>
+    <div>
     <form th:object="${orderSearch}" class="form-inline">
       <div class="form-group mb-2">
         <input type="text" th:field="*{memberName}" class="form- control" placeholder="회원명"/>
